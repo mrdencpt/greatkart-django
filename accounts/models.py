@@ -1,5 +1,5 @@
-from enum import auto
-from operator import mod
+# from enum import auto
+# from operator import mod
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.forms import DateTimeField
@@ -58,8 +58,9 @@ class Account(AbstractBaseUser):
     USERNAME_FIELD  = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
-    object = MyAccountManager()
-
+    # object = MyAccountManager()
+    objects = MyAccountManager()
+    
     def __str__(self):
         return self.email
 

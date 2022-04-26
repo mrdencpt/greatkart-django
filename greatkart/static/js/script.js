@@ -58,3 +58,8 @@ $(document).ready(function() {
 }); 
 // jquery end
 
+// ตั้งเวลาให้ id message 4 วิ ปิดตัวเอง 
+setTimeout(function(){
+    $('#message').fadeOut('slow')
+    }, 4000)
+
