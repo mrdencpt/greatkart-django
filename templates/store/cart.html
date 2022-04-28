@@ -106,7 +106,7 @@
                 <p class="text-center mb-3">
                     <img src="{% static './images/misc/payments.png' %}" height="26">
                 </p>
-                <a href="./place-order.html" class="btn btn-primary btn-block"><span class="text">Checkout</span><i class = "fas fa-check"></i></a>
+                <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"><span class="text">Checkout</span><i class = "fas fa-check"></i></a>
                 <!-- <a href="{% url 'store' %}" class="btn btn-light btn-block">เลือกสินค้าต่อ..</a> -->
                 <a href="{% url 'store' %}" class="btn btn-outline-primary btn-block"><span class="text">เลือกสินค้าต่อ..</span><i class = "fas fa-eye"></i></a>
             </div> <!-- card-body.// -->
