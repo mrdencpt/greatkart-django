@@ -14,55 +14,57 @@
     <div class="card">
     <div class="card-body">
         <h4 class="card-title mb-4">Billing Address</h4>
-        <form action="" method="POST">
+        <form action="{% url 'place_order' %}" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <div class="col form-group">
                     <label for="">First Name</label>
-                    <input type="text" name="first_name" class="form-control" required>
+                    <input type="text" name="first_name" class="form-control" value="ยอดรัก" required>
                 </div>
                 <div class="col form-group">
                     <label for="">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" required>
+                    <input type="text" name="last_name" class="form-control" value="สลักใจ" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col form-group">
                     <label for="">Email</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="form-control" value="yodruk@mail.com" required>
                 </div>
                 <div class="col form-group">
                     <label for="">Phone Number</label>
-                    <input type="text" name="phone" class="form-control" required>
+                    <input type="text" name="phone" class="form-control" value="02-7127000" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col form-group">
                     <label for="">Address Line1</label>
-                    <input type="text" name="address_line_1" class="form-control" required>
+                    <input type="text" name="address_line_1" class="form-control" value="112/2 หมู่2" required>
                 </div>
                 <div class="col form-group">
                     <label for="">Address Line2</label>
-                    <input type="text" name="address_line_2" class="form-control" >
+                    <input type="text" name="address_line_2" class="form-control" value="ซอยร่วมใจ" >
                 </div>
             </div>
             <div class="form-row">
                 <div class="col form-group">
                     <label for="">City</label>
-                    <input type="text" name="city" class="form-control" required>
+                    <input type="text" name="city" class="form-control" value="อ้อมใหญ่2" required>
                 </div>
                 <div class="col form-group">
                     <label for="">State</label>
-                    <input type="text" name="state" class="form-control" required>
+                    <input type="text" name="state" class="form-control" value="สามพราน3" required>
                 </div>
                 <div class="col form-group">
                     <label for="">Country</label>
-                    <input type="text" name="country" class="form-control" required>
+                    <input type="text" name="country" class="form-control" value="นครปฐม4" required>
                 </div>
             </div>
+            
             <div class="form-row">
                 <label for="">Order Note</label>
-                <textarea name="order_node" rows="2" class="form-control"></textarea>
+                <textarea name="order_note" rows="2" class="form-control"> บันทึกรายการโน๊ต </textarea>
+                <p>Date/Time: <span id="datetime"></span></p>
             </div>
 
     </div>
@@ -133,5 +135,10 @@
 </div> <!-- container .//  -->
 </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+
+<script>
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+</script>
 
 {% endblock %}
