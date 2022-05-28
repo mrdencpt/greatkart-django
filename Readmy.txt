@@ -1,0 +1,64 @@
+
+pip install django==3.1
+
+django-admin startproject myproject
+python manage.py startapp myapp
+ออกแบบ ตารางข้อมูลที่ models.py
+แจ้งชื่อ myapp ที่ sittings.py INSTALLED_APPS
+python manage.py makemigrations อ่านค่า จาก models.py
+python manage.py migrate  สร้างตารางฐานข้อมูลตาม ตามfolder 
+python manage.py createsuperuser สร้าง user admin
+python manage.py runserver เข้า ไปดูหน้า admin
+python manage.py startapp category สร้างแอ็พเสร็จ ต้องไปเพิ่มappที่ setting.py ด้วย
+สร้าง ไฟล์ ที่ Models.py
+python manage.py makemigrations
+
+ติดตั้ง   vitualenv
+pip install virtualenvwrapper-win
+สร้าง
+mkvirtualenv ชื่อ
+ลบ
+rmvirtualenv ชื่อ
+เรียกใช้
+workon ชื่อ
+ยกเลิกการเรียกใช้
+deactivate
+
+เอาขึ้น server heroku ดัวย git
+เช็ค heroku login
+เช็ค git enter
+
+set ค่า settings.py
+เพิ่ม floder staticfiles ที่ app food
+
+pip install django_heroku
+เพิ่มไฟล์ Procfile เนื้อหา web: gunicorn ชื่อโปรเจ็ก.wsgi
+pip install gunicorn
+pip freeze > requirements.txt
+
+heroku create ชื่อโปรเจ็ค
+
+git init สร้าง folder git
+
+สู่ขั้นตอน up ขึ้น heroku
+git add -A
+git status เช็คดูว่ามีไฟล์อะไรบ้าง
+git commit -m "producttion" ใส่คำอธิบาย git ครั้งนี้
+git push heroku master
+
+ใส่รหัส ถ้าไม่ได้ลองเปลี่ยน ' "
+heroku config:set SECRET_KEY='7dszp%!%ae+f#!c6i07'
+heroku config เช็ครหัส
+git push heroku master ผลัก ขึ้น heroku
+
+ถ้าไม่มีปัญหา จะหาตารางข้อมูลไม่เจอ
+heroku run python manage.py migrate
+heroku run python manage.py createsuperuser
+
+dumpข้อมูลขึ้นไป heroku ด้วย สร้าง folder dumps
+python manage.py dumpdata food > food/dumps/food.json
+สู่ขั้นตอน up heroku
+
+เรียก ข้อมูลจากไฟล์ food.json
+heroku run python manage.py loaddata food/dumps/food.json
+

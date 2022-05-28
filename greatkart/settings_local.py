@@ -17,10 +17,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
     ใส่ 'django_session_timeout.middleware.SessionTimeoutMiddleware',ที่ MIDDLEWARE_CLASSES
 """
 
-from pathlib import Path, PurePath
+from django.contrib.messages import constants as messages
+from pathlib import Path
 # ต้อง pip install python-decouple ก่อน from decouple import config
 from decouple import config
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,10 +32,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure--*ab2+wb!f0+h$!7(4479l%+6i0pm&@==%t(6=v4^tvb#@4*^g' เดิม
-SECRET_KEY = config('SECRET_KEY') # ใหม่ หลังจากติดตั้ง django decouple
+SECRET_KEY = config('SECRET_KEY')  # ใหม่ หลังจากติดตั้ง django decouple
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool) # True
+DEBUG = config('DEBUG', default=True, cast=bool)  # True
 
 ALLOWED_HOSTS = []
 
@@ -67,7 +68,7 @@ MIDDLEWARE = [
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
-SESSION_EXPIRE_SECONDS = 3600  # 3600 วิ = 1 hour
+SESSION_EXPIRE_SECONDS = 3600  # 3600 = 1 hour
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = 'accounts/login'
 
@@ -141,16 +142,15 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = PurePath.joinpath(BASE_DIR /'static')
+STATIC_ROOT = BASE_DIR / 'static'
+
 STATICFILES_DIRS = [
     'greatkart/static',
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-django_heroku.settings(locals())
 
 # media files configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,7 +163,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     50: 'critical',
 # }
 
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
